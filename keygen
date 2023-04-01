@@ -1,0 +1,8 @@
+#Assignment Name: Project 6
+#Name 1: Mathew Hasting
+#Name 2: Ben Nored
+#GitHub Name: MHasting2
+
+sage control6.sage key_file 
+rm *.py
+rm -r __pycache__
