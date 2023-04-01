@@ -1,8 +1,8 @@
-#Assignment Name: Project 4
+#Assignment Name: Project 6
 #Name 1: Mathew Hasting
 #Name 2: Ben Nored
 #GitHub Name: MHasting2
 
-sage control4.sage enc key_file yeats.txt output
+sage control6.sage enc key_file input output
 rm *.py
 rm -r __pycache__

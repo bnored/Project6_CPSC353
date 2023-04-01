@@ -23,17 +23,30 @@ def process(args):
     mode, key, fin, fout = init(args)
 
     data = fin.read().upper()
-    for ch in data:
-        if (ch.isalpha()):
-            pos = ord(ch) - ord('A') # ch → unicode number
-            if (mode == 'enc'):
-                pos = ciph.encrypt(pos,key)
-            if (mode == 'dec'):
-                pos = ciph.decrypt(pos,key)
+    n = key[0]
+    e = key[1]
+    d = key[2]
+    
+    if (mode == 'enc'):
+        ch = ciph.encrypt(data,e,n)
+        fout.write(str(ch))
+    if (mode == 'dec'):
+        ch = ciph.decrypt(int(data),d,n)
+        fout.write(str(ch))
+    #for ch in data:
+    #    if (ch.isalpha()):
+     #       #pos = ord(ch) - ord('A') # ch → unicode number
+      #      if (mode == 'enc'):
+       #         ch = ciph.encrypt(ch,e,n)
+        #        fout.write(str(ch))
+         #   if (mode == 'dec'):
+          #      ch = int(ch)
+           #     ch = ciph.decrypt(ch,d,n)
+            #    fout.write(ch)
             
-            pos = pos + ord('A') # pos → back to character
-            ch = chr(pos) # convert pos to ch
-        fout.write(ch)
+            #pos = pos + ord('A') # pos → back to character
+            #ch = chr(pos) # convert pos to ch
+        #fout.write(ch)
 
     fin.close()
     fout.close()
@@ -41,7 +54,7 @@ def process(args):
 # save
 def write_key(file_name):
     print('Enter size of key:')
-    size = input()
+    size = int(input())
     key = ciph.key_gen(size)
     with open('data.pickle', 'wb') as f:
         pickle.dump(key, f)
