@@ -1,4 +1,4 @@
-#Assignment Name: Project 
+#Assignment Name: Project 6
 #Name 1: Mathew Hasting
 #Name 2: Ben Nored
 #GitHub Name: MHasting2
@@ -7,27 +7,41 @@ import random
 
 def key_gen(size):
 
+    # Hard-coded e value
+    e = 17
+
     # Generate two random primes between 2^size-1 and 2^(size-1)
     p = random_prime(2^size-1,False,2^(size-1))
     q = random_prime(2^size-1,False,2^(size-1))
+    
+    n = p*q
+    d = inverse_mod(e,(p-1)*(q-1))
+    
     	
-    # (n,e,d)	
-    return (p*q),17,inverse_mod(17,(p-1)*(q-1))
+    # (n,e,d)
+    # Private Key = (n,d)
+    # Public Key = (n,e)
+    
+    # Save public key
+    fout = open('public_key.txt', 'w')
+    fout.write(str((n,e)))
+    fout.close
+    
+    # Save private key
+    fout = open('private_key.txt', 'w')
+    fout.write(str((n,d)))
+    fout.close
+    	
+    return (p*q),e,inverse_mod(e,(p-1)*(q-1))
     
     
 
 def encrypt(plain_text,e,n):
-    print(plain_text)
-    ct = power_mod(txt_to_num(plain_text),e,n)
-    print(ct)
-    return ct #power_mod(txt_to_num(plain_text),e,n)
+    return power_mod(txt_to_num(plain_text),e,n)
     
 
 def decrypt(c,d,n):
-    print(c)
-    tst = num_to_txt(power_mod(c,d,n))
-    print(tst)
-    return tst#num_to_txt(power_mod(c,d,n))
+    return num_to_txt(power_mod(c,d,n))
     
 
 ###### Helper Functions ######

@@ -4,9 +4,9 @@
 #GitHub Name: MHasting2
 
 import os
-os.system('sage --preparse project6.sage')
-os.system('mv project6.sage.py project6.py')
-import project6 as ciph 
+os.system('sage --preparse rsa.sage')
+os.system('mv rsa.sage.py rsa.py')
+import rsa as ciph 
 
 import pickle
 
@@ -33,21 +33,7 @@ def process(args):
     if (mode == 'dec'):
         ch = ciph.decrypt(int(data),d,n)
         fout.write(str(ch))
-    #for ch in data:
-    #    if (ch.isalpha()):
-     #       #pos = ord(ch) - ord('A') # ch → unicode number
-      #      if (mode == 'enc'):
-       #         ch = ciph.encrypt(ch,e,n)
-        #        fout.write(str(ch))
-         #   if (mode == 'dec'):
-          #      ch = int(ch)
-           #     ch = ciph.decrypt(ch,d,n)
-            #    fout.write(ch)
-            
-            #pos = pos + ord('A') # pos → back to character
-            #ch = chr(pos) # convert pos to ch
-        #fout.write(ch)
-
+        
     fin.close()
     fout.close()
 
